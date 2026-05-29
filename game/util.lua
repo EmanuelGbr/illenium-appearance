@@ -457,6 +457,7 @@ client = {
     setCamera            = nil, -- set by customization.lua
     rotateCamera         = nil, -- set by customization.lua
     pedTurn              = nil, -- set by customization.lua
+    rotatePed            = nil, -- set by customization.lua
     wearClothes          = nil, -- set by customization.lua
     removeClothes        = nil, -- set by customization.lua
 }

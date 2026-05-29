@@ -469,6 +469,26 @@ local function pedTurn(ped, angle)
 end
 client.pedTurn = pedTurn
 
+local MAX_ROTATE_PED_DELTA = 12.0
+
+local function rotatePed(delta)
+    local rotateDelta = tonumber(delta) or 0.0
+
+    if rotateDelta > MAX_ROTATE_PED_DELTA then
+        rotateDelta = MAX_ROTATE_PED_DELTA
+    elseif rotateDelta < -MAX_ROTATE_PED_DELTA then
+        rotateDelta = -MAX_ROTATE_PED_DELTA
+    end
+
+    if rotateDelta == 0.0 then
+        return
+    end
+
+    local heading = GetEntityHeading(cache.ped)
+    SetEntityHeading(cache.ped, heading + rotateDelta)
+end
+client.rotatePed = rotatePed
+
 local function wearClothes(data, typeClothes)
     local dataClothes = constants.DATA_CLOTHES[typeClothes]
     local animationsOn = dataClothes.animations.on
