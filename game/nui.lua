@@ -38,6 +38,11 @@ RegisterNUICallback('appearance_rotate_camera', function(direction, cb)
     client.rotateCamera(direction)
 end)
 
+RegisterNUICallback('appearance_rotate_ped_delta', function(data, cb)
+    cb(1)
+    client.rotatePed(data and data.delta)
+end)
+
 RegisterNUICallback('appearance_change_model', function(model, cb)
     local playerPed = client.setPlayerModel(model)
     SetEntityHeading(cache.ped, client.getHeading())

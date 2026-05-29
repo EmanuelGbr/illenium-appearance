@@ -55,7 +55,7 @@ Error generating stack: `+o.message+`
     outline: 0;
     font-family: '${e=>e.theme.fontFamily}', sans-serif;
   }
-  
+
   body {
     background: transparent;
     -webkit-font-smoothing: antialiased;
