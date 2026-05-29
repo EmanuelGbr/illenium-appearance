@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Illenium Appearance - Browser Preview</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="preview-shell" aria-label="Preview browser da interface Illenium Appearance">
+    <aside class="sidebar" aria-label="Categorias">
+      <div class="brand">
+        <span class="brand-mark">IA</span>
+        <div>
+          <strong>Browser Preview</strong>
+          <small>Mock NUI sem FiveM</small>
+        </div>
+      </div>
+
+      <div class="model-switch" role="group" aria-label="Modelo do ped">
+        <button class="model-button is-active" data-model="male" type="button">Masculino</button>
+        <button class="model-button" data-model="female" type="button">Feminino</button>
+      </div>
+
+      <nav id="categoryTabs" class="category-tabs" aria-label="Categorias de personalização"></nav>
+
+      <section class="help-card" aria-label="Atalhos de teclado">
+        <h2>Atalhos</h2>
+        <dl>
+          <div><dt>← / →</dt><dd>Drawable</dd></div>
+          <div><dt>↑ / ↓</dt><dd>Texture</dd></div>
+          <div><dt>Q / E</dt><dd>Categoria</dd></div>
+          <div><dt>Espaço</dt><dd>Ativar/desativar</dd></div>
+          <div><dt>Mouse</dt><dd>Arraste o preview</dd></div>
+        </dl>
+      </section>
+    </aside>
+
+    <section class="stage-column" aria-label="Preview do personagem">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Teste rápido</p>
+          <h1 id="categoryTitle">Roupas</h1>
+        </div>
+        <div class="status-pills" aria-label="Estado atual">
+          <span id="modelPill" class="pill">mp_m_freemode_01</span>
+          <span id="callbackPill" class="pill pill-muted">callbacks mockados</span>
+        </div>
+      </header>
+
+      <div id="pedStage" class="ped-stage" tabindex="0" role="application" aria-label="Preview central. Clique e arraste para rotacionar o ped.">
+        <div class="drag-hint">Clique e arraste para rotacionar</div>
+        <div id="ped" class="ped" aria-hidden="true">
+          <div class="ped-head"></div>
+          <div class="ped-hair"></div>
+          <div class="ped-torso"></div>
+          <div class="ped-arm ped-arm-left"></div>
+          <div class="ped-arm ped-arm-right"></div>
+          <div class="ped-leg ped-leg-left"></div>
+          <div class="ped-leg ped-leg-right"></div>
+          <div class="ped-prop"></div>
+        </div>
+      </div>
+
+      <section class="state-panel" aria-label="Resumo do estado mockado">
+        <div>
+          <span>Drawable</span>
+          <strong id="drawableValue">0</strong>
+        </div>
+        <div>
+          <span>Texture</span>
+          <strong id="textureValue">0</strong>
+        </div>
+        <div>
+          <span>Status</span>
+          <strong id="activeValue">Ativo</strong>
+        </div>
+        <div>
+          <span>Rotação</span>
+          <strong id="rotationValue">0°</strong>
+        </div>
+      </section>
+    </section>
+
+    <section class="grid-column" aria-label="Grade de opções">
+      <div class="grid-toolbar">
+        <div>
+          <p class="eyebrow">Thumbnails</p>
+          <h2 id="gridTitle">Selecione uma opção</h2>
+        </div>
+        <button id="toggleButton" class="toggle-button" type="button">Alternar Space</button>
+      </div>
+      <div id="thumbnailGrid" class="thumbnail-grid" role="grid" aria-label="Opções em grade"></div>
+      <pre id="eventLog" class="event-log" aria-label="Log de callbacks mockados"></pre>
+    </section>
+  </main>
+
+  <script src="./preview.js" defer></script>
+</body>
+</html>
