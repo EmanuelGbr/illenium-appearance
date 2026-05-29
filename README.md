@@ -105,6 +105,23 @@ The following remain identical to upstream v5.7.0:
 
 ----------------------------------
 
+
+BROWSER NUI PREVIEW
+
+A standalone browser preview is available for testing UI interactions without
+joining FiveM:
+
+• Open `web/preview/index.html` directly in a browser; or
+• Run `python3 -m http.server 4173` from the repository root and visit
+  `http://localhost:4173/web/preview/`
+
+The preview is isolated from `fxmanifest.lua` and mocks the NUI callbacks used
+for thumbnails, keyboard navigation, mouse ped rotation, Space toggles, and
+male/female model switching. It does not execute GTA natives and does not
+replace in-game validation. See `docs/browser-preview.md` for details.
+
+----------------------------------
+
 INSTALLATION
 
 1. Drop the resource into your resources folder
