@@ -28,6 +28,24 @@ local function getAppearance()
 end
 client.getAppearance = getAppearance
 
+local function getAppearanceVisualContext(appearanceData)
+    local model = appearanceData and appearanceData.model or client.getPedModel(cache.ped) or 'mp_m_freemode_01'
+    local freemodeGender = model == 'mp_m_freemode_01' and 'male' or model == 'mp_f_freemode_01' and 'female' or nil
+    local isFreemode = freemodeGender ~= nil
+
+    return {
+        model = model,
+        gender = freemodeGender or client.getPedDecorationType(),
+        isFreemode = isFreemode,
+    }
+end
+client.getAppearanceVisualContext = getAppearanceVisualContext
+
+local function setAppearance(appearanceData)
+    playerAppearance = appearanceData
+end
+client.setAppearance = setAppearance
+
 local function addToBlacklist(item, drawable, drawableId, blacklistSettings)
     if drawable == drawableId and item.textures then
         for i = 1, #item.textures do

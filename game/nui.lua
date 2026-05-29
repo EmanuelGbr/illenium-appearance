@@ -11,7 +11,11 @@ RegisterNUICallback('appearance_get_locales', function(_, cb)
 end)
 
 RegisterNUICallback('appearance_get_settings', function(_, cb)
-    cb({ appearanceSettings = client.getAppearanceSettings() })
+    local appearanceSettings = client.getAppearanceSettings()
+    cb({
+        appearanceSettings = appearanceSettings,
+        visualContext = client.getAppearanceVisualContext(nil, appearanceSettings),
+    })
 end)
 
 RegisterNUICallback('appearance_get_data', function(_, cb)
@@ -20,7 +24,11 @@ RegisterNUICallback('appearance_get_data', function(_, cb)
     if appearanceData.tattoos then
         client.setPedTattoos(cache.ped, appearanceData.tattoos)
     end
-    cb({ config = client.getConfig(), appearanceData = appearanceData })
+    cb({
+        config = client.getConfig(),
+        appearanceData = appearanceData,
+        visualContext = client.getAppearanceVisualContext(appearanceData),
+    })
 end)
 
 RegisterNUICallback('appearance_set_camera', function(camera, cb)
@@ -39,13 +47,21 @@ RegisterNUICallback('appearance_rotate_camera', function(direction, cb)
 end)
 
 RegisterNUICallback('appearance_change_model', function(model, cb)
-    local playerPed = client.setPlayerModel(model)
+    local previousAppearance = client.getAppearance()
+    client.setPlayerModel(model)
     SetEntityHeading(cache.ped, client.getHeading())
     SetEntityInvincible(cache.ped, true)
     TaskStandStill(cache.ped, -1)
+
+    local appearanceData = client.getPedAppearance(cache.ped)
+    local appearanceSettings = client.getAppearanceSettings()
+    client.setAppearance(appearanceData)
+
     cb({
-        appearanceSettings = client.getAppearanceSettings(),
-        appearanceData     = client.getPedAppearance(cache.ped),
+        appearanceSettings = appearanceSettings,
+        appearanceData     = appearanceData,
+        previousVisualContext = client.getAppearanceVisualContext(previousAppearance),
+        visualContext = client.getAppearanceVisualContext(appearanceData, appearanceSettings),
     })
 end)
 
